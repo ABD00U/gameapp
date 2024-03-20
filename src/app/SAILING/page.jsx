@@ -4,8 +4,8 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import cover from "../../public/wraper.png";
-async function gethome() {
+import cover from "../../../public/wraper.png";
+async function getSAILING() {
   const options = {
     method: "GET",
     headers: {
@@ -15,7 +15,7 @@ async function gethome() {
   };
 
   const url = await fetch(
-    ` https://free-to-play-games-database.p.rapidapi.com/api/games?category=MMORPG`,
+    ` https://free-to-play-games-database.p.rapidapi.com/api/games?category=SAILING`,
     options
   );
   let response = await url.json();
@@ -23,8 +23,9 @@ async function gethome() {
   return response;
 }
 
-export default async function Home() {
-  let list = await gethome();
+export default async function SAILING() {
+  let list = await getSAILING();
+
   return (
     <div className="mt-5 ">
       <Image src={cover} alt="" className="w-100"></Image>
@@ -33,7 +34,7 @@ export default async function Home() {
           return (
             <>
               <div className="col-md-3 ">
-                <Link href={`/${el.id}`}>
+                <Link href={`/SAILING/${el?.id}`}>
                   <div className="item position-relative">
                     <div className=" bg-dark text-white  ">
                       <img
